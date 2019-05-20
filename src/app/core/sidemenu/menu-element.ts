@@ -231,7 +231,7 @@ export const menus = [
   {
         name: 'Pages',
         icon: 'content_copy',
-        open: false,
+        open: true,
         link: false,
         sub: [
             {
