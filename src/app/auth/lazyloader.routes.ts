@@ -3,7 +3,7 @@ import { AuthComponent } from './auth.component';
 
 
 export const appRoutes: Routes = [{
-  path: '', component: AuthComponent, children: [
+  path: 'auth', component: AuthComponent, children: [
 
     { path: 'pages', loadChildren: '../pages/pages.module#PagesModule' },
 
