@@ -7,6 +7,8 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LazyLoadModule } from './lazy-load/lazy-load.module';
+import {HttpClientModule} from '@angular/common/http';
+import {MaterialModule} from './material.module';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { LazyLoadModule } from './lazy-load/lazy-load.module';
     CoreModule,
     AuthModule,
     BrowserAnimationsModule,
-    LazyLoadModule
+    LazyLoadModule,
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

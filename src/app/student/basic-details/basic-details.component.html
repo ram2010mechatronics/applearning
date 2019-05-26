@@ -1,0 +1,104 @@
+<mat-card fxFlex="100%" fxFlex.xs="100%">
+    <mat-card-title class="card-title">Basic Details Form</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="basicdetailsForm" class="normal-form" (ngSubmit)="onFormSubmit(basicdetailsForm.value)">
+            <mat-grid-list cols="3" rowHeight="320px">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                              <input formControlName="srNo" matInput placeholder="StudentRecordNumber" [readonly]="disableStudentId">
+
+                              <!-- <button mat-icon-button matSuffix color="accent" [disabled]="disableStudentId" (click)="onClear()">
+                                    <mat-icon style="cursor: pointer;" >search</mat-icon>
+                              </button> -->
+                              <button type="button" mat-icon-button matSuffix color="warn" [disabled]="disableStudentId" (click)="update()">
+                                <mat-icon class="mat-18">search</mat-icon>
+                            </button>
+                          </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Standard</mat-label>
+                            <mat-select formControlName="standard" name="standard">
+                                <mat-option *ngFor="let standard of standards" [value]="standard.value">
+                                    {{standard.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Section</mat-label>
+                            <mat-select formControlName="section" name="section">
+                                <mat-option *ngFor="let section of sections" [value]="section.value">
+                                    {{section.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="firstName" matInput placeholder="First Name*">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="middleName" matInput placeholder="Middle Name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="lastName" matInput placeholder="Last Name">
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <!-- <mat-form-field>
+                            <input formControlName="dateofBirth" matInput [matDatepicker]="picker" placeholder="Date of birth"  [value]="date.value">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                        </mat-form-field> -->
+                        <mat-form-field>
+                            <input formControlName="dateofBirth" matInput [matDatepicker]="picker" placeholder="Date of birth">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <div>
+                            <label>Gender: </label>
+                            <mat-radio-group formControlName="gender">
+                                <mat-radio-button value="M">Male</mat-radio-button>
+                                <mat-radio-button value="F">Female</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Religion</mat-label>
+                            <mat-select formControlName="religion" name="religion">
+                                <mat-option *ngFor="let religion of religions" [value]="religion.value">
+                                    {{religion.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Nationality</mat-label>
+                            <mat-select formControlName="nationality" name="nation">
+                                <mat-option *ngFor="let nation of nations" [value]="nation.value">
+                                    {{nation.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="aadharNo" matInput placeholder="Aadhar Number">
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <img [src]="url" width="150px" height="200px" *ngIf="url">
+                        <input type='file' (change)="onSelectFile($event)">
+                        <br/>
+                        <br/>
+                        <button (click)="onUpload()">Upload!</button>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-card-actions align="center">
+                <button mat-raised-button color="primary" type="submit" [disabled]="basicdetailsForm.invalid">Submit</button>
+                <button mat-raised-button color="warn" type="reset" (click)="resetForm()">Clear</button>
+            </mat-card-actions>
+        </form>
+        <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">
+            {{massage}}
+          </p>
+    </mat-card-content>
+</mat-card>

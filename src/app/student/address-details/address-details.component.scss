@@ -1,0 +1,49 @@
+div.container{
+    margin: 0px 40px;
+  }
+
+  .fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  form.normal-form{
+    margin: 10px;
+  }
+
+  .controles-container{
+    width: 100%;
+    padding: 5%;
+  }
+
+  .controles-container > * {
+    width: 100%;
+    }
+
+    .add-bottom-padding{
+        padding-bottom: 10px;
+    }
+    /* radio group */
+  mat-radio-group mat-radio-button{
+    margin-left: 5px;
+  }
+
+  mat-header-row{
+    margin: auto;    
+  }
+
+  .button-row button{
+    margin: 5px;
+  }
+
+  .row {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* for centering 3 blocks in the center */
+    /* justify-content: space-between; for space in between */
+  }
+  .block {
+    width: 100px;
+  }

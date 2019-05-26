@@ -1,0 +1,176 @@
+<mat-card fxFlex="100%" fxFlex.xs="100%">
+    <mat-card-title class="card-title">Address Details Form</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="addressForm" class="normal-form" (ngSubmit)="onFormSubmit(addressForm.value)">
+            <mat-grid-list cols="3" rowHeight="320px">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                            <input type="hidden" formControlName="srNo">
+                            <input type="hidden" formControlName="addressTypeIndex">
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>Address Type</mat-label>
+                            <mat-select formControlName="addressType" id="addressType" name="addressType">
+                                <mat-option *ngFor="let addressTypes of AddressType" [value]="addressTypes">
+                                    {{addressTypes}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                                    <mat-label for="houseNo">House Number</mat-label>
+                                    <input matInput type="text"  formControlName="houseNo"  id="houseNo"  name="houseNo" >
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label for="addressline1">Address Line 1</mat-label>
+                                    <input matInput type="text" formControlName="addressline1"  id="addressline1"  name="addressline1" >
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label for="addressline2">Address Line 2</mat-label>
+                                    <input matInput type="text" formControlName="addressline2"  id="addressline2"  name="addressline2" >
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label for="addressline3">Address Line 3</mat-label>
+                                    <input matInput type="text" formControlName="addressline3"  id="addressline3"  name="addressline3" >
+                                </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                                    <mat-label for="district">District</mat-label>
+                                    <mat-select formControlName="district"  id="district"  name="district">
+                                        <mat-option *ngFor="let districts of District" [value]="districts">
+                                            {{districts}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label for="city">City</mat-label>
+                                    <mat-select id="city" formControlName="city"  name="city">
+                                        <mat-option *ngFor="let cities of City" [value]="cities">
+                                            {{cities}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                 <mat-form-field>
+                                    <mat-label for="state">State</mat-label>
+                                   <mat-select formControlName="state" id="state" name="state">
+                                        <mat-option *ngFor="let states of State" [value]="states">
+                                            {{states}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label for="pincode">Pincode</mat-label>
+                                    <input matInput type="text" formControlName="pincode" id="pincode" name="pincode" >
+                                </mat-form-field>
+                                 <mat-form-field>
+                                    <mat-label for="landmark">Nearest Landmark</mat-label>
+                                    <input matInput type="text" formControlName="landmark" id="landmark"  name="landmark">
+                                </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-card-actions align="center">
+                    <div class="row">
+                    <div *ngIf="!singleAddressSelected" class="block">
+                                <button mat-raised-button type="submit" color="primary"  [disabled]="addressForm.invalid">Add</button>
+                </div>
+                <div *ngIf="singleAddressSelected" class="block">
+                                <button mat-raised-button type="submit" color="primary" [disabled]="addressForm.invalid">Update</button>
+                </div>
+                 <div class="block">
+                                <button mat-raised-button type="reset" color="warn" (click)="resetForm()">Clear</button>
+                                </div>
+                                </div>
+                    </mat-card-actions>
+        </form>
+    </mat-card-content>
+    
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="addressTypeIndex">
+                    <mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.addressTypeIndex}} </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="addressType">
+              <mat-header-cell *matHeaderCellDef> AddressType </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.addressType}} </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="houseNo">
+              <mat-header-cell *matHeaderCellDef> HouseNo </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.houseNo}} </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="addressline1">
+              <mat-header-cell *matHeaderCellDef> Addressline1 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.addressline1}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="addressline2">
+                <mat-header-cell *matHeaderCellDef> Addressline2 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.addressline2}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="addressline3">
+                <mat-header-cell *matHeaderCellDef> Addressline3 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.addressline3}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="district">
+              <mat-header-cell *matHeaderCellDef> District </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.district}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="state">
+                <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="pincode">
+                <mat-header-cell *matHeaderCellDef> Pincode </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.pincode}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="landmark">
+                <mat-header-cell *matHeaderCellDef> Landmark </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.landmark}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="update">
+                    <mat-header-cell *matHeaderCellDef> Update </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let i = index;">
+                      <button mat-icon-button color="accent" (click)="editAddress(element.addressTypeIndex)">
+                          <mat-icon class="mat-18">edit</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="delete">
+                      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+                      <mat-cell *matCellDef="let element; let i = index;">
+                        <button mat-icon-button color="warn" (click)="deleteAddress(element.addressTypeIndex)">
+                            <mat-icon class="mat-18">delete</mat-icon>
+                        </button>
+                      </mat-cell>
+                </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+          </mat-table>
+
+</mat-card>

@@ -231,7 +231,7 @@ export const menus = [
   {
         name: 'Pages',
         icon: 'content_copy',
-        open: true,
+        open: false,
         link: false,
         sub: [
             {
@@ -251,7 +251,31 @@ export const menus = [
                 link: 'pages/contact'
             }
         ]
-    }
+    },
+  {
+    name: 'Student',
+    icon: 'content_copy',
+    open: false,
+    link: false,
+    sub: [
+      {
+        name: 'Enrollment',
+        icon: 'work',
+        open: false,
+        link: 'student/newEnrollment',
+      }, {
+        name: 'StudentDetails',
+        icon: 'local_laundry_service',
+        open: false,
+        link: 'student/studentdetails',
+      }, {
+        name: 'Attendance',
+        icon: 'directions',
+        open: false,
+        link: 'student/attendance'
+      }
+    ]
+  }
     // , {
     //
     //     name: 'Charts',

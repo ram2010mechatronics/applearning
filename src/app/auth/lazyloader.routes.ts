@@ -6,6 +6,7 @@ export const appRoutes: Routes = [{
   path: 'auth', component: AuthComponent, children: [
 
     { path: 'pages', loadChildren: '../pages/pages.module#PagesModule' },
+    { path: 'student', loadChildren: '../student/student.module#StudentModule' },
 
   ]
 }];
