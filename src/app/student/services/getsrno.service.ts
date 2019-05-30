@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
     Accept:  'application/json',
-    Authorization: 'Bearer c991d07d-99f0-3b61-89cf-a7b84eef6377'
+    Authorization: 'Bearer 2f4f22e0-f00d-34c3-8aa7-6a8bb3f1e1c7'
   })
 };
 

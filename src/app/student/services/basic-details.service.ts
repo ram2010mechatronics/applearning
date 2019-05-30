@@ -7,8 +7,8 @@ import { BasicDetails } from '../models/basic-details';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    Accept:  'application/json',
-    Authorization: 'Bearer c991d07d-99f0-3b61-89cf-a7b84eef6377',
+    // Accept:  'application/json',
+    Authorization: 'Bearer 2f4f22e0-f00d-34c3-8aa7-6a8bb3f1e1c7',
     'Content-Type': 'application/json'
   })
 };
@@ -70,12 +70,12 @@ export class BasicDetailsService {
   }
 
   updateBasicDetails(basicDetails: BasicDetails): Observable< BasicDetails> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    // const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this .http.put< BasicDetails>(this .url + '/UpdateBasicDetails/', basicDetails, httpOptions);
   }
 
   deleteBasicDetailsBysrNo(srNo: number): Observable< number> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    // const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this .http.delete< number>(this .url + '/DeleteEmployeeDetails?id=' + srNo, httpOptions);
   }
 
